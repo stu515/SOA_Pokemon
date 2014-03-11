@@ -1,0 +1,157 @@
+html {
+	margin:0px;
+}
+
+body {
+	margin:0px;
+	width:100%;
+	background: white;
+	font-family: arial;
+}
+
+input[type=submit] {
+	color: white;
+	background: #EF464C;
+	padding: 5px 5px;
+	border: 0 none;
+}
+
+input[type=submit]:hover {
+	cursor:pointer;
+}
+
+input[type=text] {
+	border: 1px solid rgba(32, 44, 67, .3);
+}
+
+input[type=password] {
+	border: 1px solid rgba(32, 44, 67, .3);
+}
+
+a { text-decoration: none;}
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:focus { text-decoration: none; }
+a:hover, a:active { text-decoration: none; }
+
+#menu {
+	position: fixed;
+	top:0px;
+	width: 200px;
+	background: #202C43;
+	height: 100%;
+	color: white;
+	text-align: center;
+}
+
+#links {
+	width:160px;
+	padding: 10px 0px;
+	margin: 10px 20px;
+	border-top: 2px solid #EF464C;
+	border-bottom: 2px solid #EF464C;
+}
+
+#menu a {
+	color: white;
+}
+
+#menu input[type=submit] {
+	width: 160px;
+}
+
+#contents {
+	padding-top:20px;
+	padding-left:220px;
+}
+
+#title {
+	font-size: 20px;
+	font-weight: 700;
+	color: #202C43;
+	margin-bottom:20px;
+}
+
+#title2 {
+	font-size: 18px;
+	font-weight: 700;
+	color: #202C43;
+}
+
+#title3 {
+	margin-left:1px;
+	color: #202C43;
+}
+
+#list {
+	margin-bottom: 50px;
+}
+
+#list td{
+	width:220px;
+}
+
+#list td[class=button]{
+	width:50px;
+}
+
+#list td[class=radio]{
+	width:20px;
+}
+
+#list td[class=platform]{
+	width:500px;
+	color: #EF464C;
+}
+
+#list tr[class=header]{
+	height:20px;
+	color: #EF464C;
+	font-weight: 700;
+}
+
+#list input[type=submit] {
+	width: 110px;
+}
+
+#list input[type=submit][class=receipt] {
+	background-color: #202C43;
+}
+
+#list .row {
+	border-bottom: 1px solid #EF464C;
+}
+
+#login {
+	color: white;
+	width:200px;
+}
+
+#login td {
+	width:60px;
+	color: #202C43;
+}
+
+#login input[type="submit"]{
+	width: 210px;
+}
+
+#box {
+	margin-top:20px;
+}
+
+#platform {
+	border: 1px solid rgba(32, 44, 67, .3);
+}
+
+#name {
+	color: #EF464C;
+	font-weight: 700;
+}
+
+.drop {
+	width:342px;
+	margin-left:1px;
+	margin-bottom:20px;
+	border: 1px solid rgba(32, 44, 67, .3);
+}

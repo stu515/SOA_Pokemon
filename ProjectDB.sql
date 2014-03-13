@@ -1,3 +1,5 @@
+DROP DATABASE `soa_db`;
+
 CREATE DATABASE if not exists `soa_db`;
 
 USE `soa_db`;

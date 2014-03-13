@@ -17,7 +17,7 @@ CREATE TABLE `users_tbl` (
 CREATE TABLE `moves_tbl` (
   `move_id` int(10) NOT NULL AUTO_INCREMENT,
   `move_name` varchar(355) DEFAULT NULL,
-  `max_number` double(10) DEFAULT NULL,
+  `max_number` int(10) DEFAULT NULL,
   `type` varchar(355) DEFAULT NULL,
   PRIMARY KEY (`move_id`)
 ) ;
@@ -48,7 +48,7 @@ CREATE TABLE `users_creatures_moves_tbl` (
   `user_id` int(10) NOT NULL,
   `creature_id` int(10) NOT NULL,
   `move_id` int(10) NOT NULL,
-  `experience_points` double(10) DEFAULT NULL,
+  `experience_points` int(10) DEFAULT NULL,
   PRIMARY KEY (`user_id`, `creature_id`, `move_id`)
 ) ;
 

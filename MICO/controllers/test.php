@@ -1,7 +1,7 @@
 <?php
-class test extends CI_Controller 
+class test extends CI_Controller
 {
-	public function show($username)
+	public function showUsers($username)
 	{
 		$this->load->model('test_model');
 		$test = $this->test_model->get_info($username);

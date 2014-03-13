@@ -1,59 +1,118 @@
-DROP DATABASE `soa_db`;
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE DATABASE if not exists `soa_db`;
+CREATE SCHEMA IF NOT EXISTS `soa_db` DEFAULT CHARACTER SET utf8 ;
+USE `soa_db` ;
 
-USE `soa_db`;
+-- -----------------------------------------------------
+-- Table `soa_db`.`creatures_locations_tbl`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `soa_db`.`creatures_locations_tbl` ;
 
-CREATE TABLE `users_tbl` (
-  `user_id` int(10) NOT NULL AUTO_INCREMENT,
-  `username` varchar(355) DEFAULT NULL,
-  `password` varchar(355) DEFAULT NULL,
-  `handle` varchar(355) DEFAULT NULL,
-  `email_address` varchar(355) DEFAULT NULL,
-  `mobile_number` varchar(355) DEFAULT NULL,
-  PRIMARY KEY (`user_id`)
-) ;
+CREATE  TABLE IF NOT EXISTS `soa_db`.`creatures_locations_tbl` (
+  `location_id` INT(10) NOT NULL ,
+  `creature_id` INT(10) NOT NULL DEFAULT '0' ,
+  PRIMARY KEY (`location_id`, `creature_id`) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
-CREATE TABLE `moves_tbl` (
-  `move_id` int(10) NOT NULL AUTO_INCREMENT,
-  `move_name` varchar(355) DEFAULT NULL,
-  `max_number` int(10) DEFAULT NULL,
-  `type` varchar(355) DEFAULT NULL,
-  PRIMARY KEY (`move_id`)
-) ;
 
-CREATE TABLE `creatures_tbl` (
-  `creature_id` int(10) NOT NULL AUTO_INCREMENT,
-  `creature_name` varchar(355) DEFAULT NULL,
-  `type` varchar(355) DEFAULT NULL,
-  `description` varchar(1000) DEFAULT NULL,
-  PRIMARY KEY (`creature_id`)
-) ;
+-- -----------------------------------------------------
+-- Table `soa_db`.`creatures_tbl`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `soa_db`.`creatures_tbl` ;
 
-CREATE TABLE `locations_tbl` (
-  `location_id` int(10) NOT NULL,
-  `location_name` varchar(355) DEFAULT NULL,
-  `gps_coordinates` varchar(355) DEFAULT NULL,
-  PRIMARY KEY (`location_id`)
-) ;
+CREATE  TABLE IF NOT EXISTS `soa_db`.`creatures_tbl` (
+  `creature_id` INT(10) NOT NULL AUTO_INCREMENT ,
+  `creature_name` VARCHAR(355) NULL DEFAULT NULL ,
+  `type` VARCHAR(355) NULL DEFAULT NULL ,
+  `description` VARCHAR(1000) NULL DEFAULT NULL ,
+  PRIMARY KEY (`creature_id`) )
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8;
 
-CREATE TABLE `users_creatures_tbl` (
-  `user_id` int(10) NOT NULL,
-  `creature_id` int(10) NOT NULL,
-  `nickname` varchar(355) DEFAULT NULL,
-  PRIMARY KEY (`user_id`, `creature_id`)
-) ;
 
-CREATE TABLE `users_creatures_moves_tbl` (
-  `user_id` int(10) NOT NULL,
-  `creature_id` int(10) NOT NULL,
-  `move_id` int(10) NOT NULL,
-  `experience_points` int(10) DEFAULT NULL,
-  PRIMARY KEY (`user_id`, `creature_id`, `move_id`)
-) ;
+-- -----------------------------------------------------
+-- Table `soa_db`.`locations_tbl`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `soa_db`.`locations_tbl` ;
 
-CREATE TABLE `creatures_locations_tbl` (
-  `location_id` int(10) NOT NULL,
-  `creature_id` int(10) DEFAULT NULL,
-  PRIMARY KEY (`location_id`, `creature_id`)
-) ;
+CREATE  TABLE IF NOT EXISTS `soa_db`.`locations_tbl` (
+  `location_id` INT(10) NOT NULL ,
+  `location_name` VARCHAR(355) NULL DEFAULT NULL ,
+  `gps_coordinates` VARCHAR(355) NULL DEFAULT NULL ,
+  PRIMARY KEY (`location_id`) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `soa_db`.`moves_tbl`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `soa_db`.`moves_tbl` ;
+
+CREATE  TABLE IF NOT EXISTS `soa_db`.`moves_tbl` (
+  `move_id` INT(10) NOT NULL AUTO_INCREMENT ,
+  `move_name` VARCHAR(355) NULL DEFAULT NULL ,
+  `max_number` INT(10) NULL DEFAULT NULL ,
+  `type` VARCHAR(355) NULL DEFAULT NULL ,
+  PRIMARY KEY (`move_id`) )
+ENGINE = InnoDB
+AUTO_INCREMENT = 2005
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `soa_db`.`users_creatures_moves_tbl`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `soa_db`.`users_creatures_moves_tbl` ;
+
+CREATE  TABLE IF NOT EXISTS `soa_db`.`users_creatures_moves_tbl` (
+  `user_id` INT(10) NOT NULL ,
+  `creature_id` INT(10) NOT NULL ,
+  `move_id` INT(10) NOT NULL ,
+  `experience_points` INT(10) NULL DEFAULT NULL ,
+  PRIMARY KEY (`user_id`, `creature_id`, `move_id`) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `soa_db`.`users_creatures_tbl`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `soa_db`.`users_creatures_tbl` ;
+
+CREATE  TABLE IF NOT EXISTS `soa_db`.`users_creatures_tbl` (
+  `user_id` INT(10) NOT NULL ,
+  `creature_id` INT(10) NOT NULL ,
+  `nickname` VARCHAR(355) NULL DEFAULT NULL ,
+  PRIMARY KEY (`user_id`, `creature_id`) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `soa_db`.`users_tbl`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `soa_db`.`users_tbl` ;
+
+CREATE  TABLE IF NOT EXISTS `soa_db`.`users_tbl` (
+  `user_id` INT(10) NOT NULL AUTO_INCREMENT ,
+  `username` VARCHAR(355) NULL DEFAULT NULL ,
+  `password` VARCHAR(355) NULL DEFAULT NULL ,
+  `handle` VARCHAR(355) NULL DEFAULT NULL ,
+  `email_address` VARCHAR(355) NULL DEFAULT NULL ,
+  `mobile_number` VARCHAR(355) NULL DEFAULT NULL ,
+  PRIMARY KEY (`user_id`) )
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8;
+
+USE `soa_db` ;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

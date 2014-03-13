@@ -55,7 +55,3 @@ CREATE TABLE `creatures_locations_tbl` (
   `creature_id` int(10) DEFAULT NULL,
   PRIMARY KEY (`location_id`, `creature_id`)
 ) ;
-
-INSERT INTO creatures_tbl(creature_id,creature_name,type,description) VALUES ('0001','Hapsterr', 'Prof','King of all SOA creatures');
-INSERT INTO creatures_tbl(creature_id,creature_name,type,description) VALUES ('0001','Hapsterr', 'Prof','King of all SOA creatures');
-INSERT INTO creatures_tbl(creature_id,creature_name,type,description) VALUES ('0001','Hapsterr', 'Prof','King of all SOA creatures');

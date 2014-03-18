@@ -1,0 +1,15 @@
+INSERT INTO `users_creatures_moves_tbl` (`user_id`,`creature_id`,`move_id`,`experience_points`) VALUES (1,2,1,5);
+INSERT INTO `users_creatures_moves_tbl` (`user_id`,`creature_id`,`move_id`,`experience_points`) VALUES (2,1,2,100);
+INSERT INTO `users_creatures_tbl` (`user_id`,`creature_id`,`nickname`) VALUES (1,1,'myBoo');
+INSERT INTO `users_creatures_tbl` (`user_id`,`creature_id`,`nickname`) VALUES (1,2,'myBaby');
+INSERT INTO `users_creatures_tbl` (`user_id`,`creature_id`,`nickname`) VALUES (2,1,'FearMe');
+INSERT INTO `creatures_tbl` (`creature_id`,`creature_name`,`type`,`description`) VALUES (1,'Hapster','God','nobody can stop Him *thunder roars*');
+INSERT INTO `creatures_tbl` (`creature_id`,`creature_name`,`type`,`description`) VALUES (2,'JacobChan','Pussy','y\'all hide from him');
+INSERT INTO `locations_tbl` (`location_id`,`location_name`,`gps_coordinates`) VALUES (-1,'ADMU','0,0');
+INSERT INTO `locations_tbl` (`location_id`,`location_name`,`gps_coordinates`) VALUES (2,'UP','-10,-5');
+INSERT INTO `moves_tbl` (`move_id`,`move_name`,`max_number`,`type`) VALUES (1,'twerq',10,'dance');
+INSERT INTO `moves_tbl` (`move_id`,`move_name`,`max_number`,`type`) VALUES (2,'punch',50,'power');
+INSERT INTO `users_tbl` (`user_id`,`username`,`password`,`handle`,`email_address`,`mobile_number`) VALUES (1,'micomag','6969mebaby','Mico','mico@gmail.com','6969696969');
+INSERT INTO `users_tbl` (`user_id`,`username`,`password`,`handle`,`email_address`,`mobile_number`) VALUES (2,'ejmag','sexynimico','EJ','ej@mail.com','8888888888');
+INSERT INTO `creatures_locations_tbl` (`location_id`,`creature_id`) VALUES (1,1);
+INSERT INTO `creatures_locations_tbl` (`location_id`,`creature_id`) VALUES (2,2);

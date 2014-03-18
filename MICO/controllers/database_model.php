@@ -48,7 +48,7 @@ class database_model extends CI_Model{
 		return $query->result_array(); //return row_array() pag isa lang
 	}
 
-	public function getUserCreature($username)
+	public function getUserCreature($user_id,$creature_id)
 	{
 		$query = $this->db->get('users_creatures_tbl');
 		return $query->result_array(); //return row_array() pag isa lang
@@ -56,10 +56,15 @@ class database_model extends CI_Model{
 
 	public function getUserCreatureMove($user_id, $creature_name, $move_name)
 	{
-		//$query = $this->db->get('users_creatures_moves_tbl');
-		$this->db->select('u.user_id');
-		$this->db->from('users_tbl u', 'creatures_tbl c', 'moves_tbl m', 'users_creatures_moves_tbl ucm');
+		//$this->db->select('u.user_id');
+		//$this->db->from('users_tbl u', 'creatures_tbl c', 'moves_tbl m', 'users_creatures_moves_tbl ucm');
 		//$this->db->where('u.user_id','ucm.user_id');
+		
+		
+		//$this->db->select(user_id)
+		//$this->db->from()
+		
+		
 		/**$string="SELECT u.username, c.creature_name, m.move_name
 				FROM users_tbl AS u, creatures_tbl AS c, moves_tbl AS m, users_creatures_moves_tbl AS ucm
 				WHERE u.user_id = ucm.user_id
@@ -67,7 +72,10 @@ class database_model extends CI_Model{
 				AND c.creature_id = ucm.creature_id;";*/
 		//$this->db->where('moves_tbl.move_id','users_creatures_moves_tbl.move_id');
 		//$this->db->where('creatures_tbl.creature_id','users_creatures_moves_tbl.creature_id');
-		$query=$this->db->get();
+		//$query=$this->db->get();
+		//return $query->result_array(); //return row_array() pag isa lang
+		
+		$query = $this->db->get('users_creatures_moves_tbl');
 		return $query->result_array(); //return row_array() pag isa lang
 	}
 

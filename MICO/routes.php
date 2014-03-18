@@ -49,26 +49,23 @@ $route['user/register'] = 'database/showUsers/$1'; //add new user to database //
 $route['user/login'] = 'database/showUsers/$1'; //login page 
 
 //---USER DATA
-$route['user/(:any)'] = 'database/getAllUsers';//get user from db
-$route['user/getUser//(:any)'] = 'database/getUser/$1'; //show user info //WORKS BETCH
+$route['user/getUser/(:any)'] = 'database/getUser/$1'; //show user info //WORKS BETCH
 
 
 //===CREATURE DATABASE
 //---CREATURES
-$route['creature/(:any)'] = 'database/showUsers/$1'; //get creature from db
-$route['creature/(:any)/creature_information'] = 'database/showUsers/$1'; //get creature info
+$route['creature/(:any)/creature_information'] = 'database/getCreature/$1'; //get creature info
 
 //---USER CREATURES
-$route['user/(:any)/(:any)'] = 'database/showUsers/$1'; //get user creature from db
-$route['user/(:any)/(:any)/user_creature_information'] =  'database/showUsers/$1'; //show user creatures
+$route['user/(:any)/(:any)/user_creature_information'] =  'database/getUserCreature/$1/$2'; //show user creatures
 
 //---MOVES
-$route['creature/(:any)/(:any)'] = 'database/showUsers/$1'; //get move from db
-$route['creature/(:any)/(:any)/moves_information'] = 'database/showUsers/$1'; // show move from db
+//$route['creature/(:any)/(:any)'] = 'database/getAllMoves/$1'; //get move from db
+$route['creature/(:any)/(:any)/moves_information'] = 'database/getMove/$1'; // show move from db
 
 //---USER CREATURE MOVES
-$route['user/(:any)/(:any)/(:any)/'] = 'database/showUsers/$1';;
-$route['user/(:any)/(:any)/(:any)/user_creature_moves_information'] = 'database/showUsers/$1';;
+//$route['user/(:any)/(:any)/(:any)/'] = 'database/showUsers/$1'; //get userCreature().getMove()
+$route['user/(:any)/(:any)/(:any)/user_creature_moves_information'] = 'database/getUserCreatureMove/$1/$2/$3';
 
 //===NAVIGATION
 //---Locations

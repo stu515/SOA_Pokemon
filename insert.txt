@@ -1,0 +1,1 @@
+INSERT INTO users_tbl VALUES(112421, 'test', 'test', 'test', 'test@test.com', '0915');

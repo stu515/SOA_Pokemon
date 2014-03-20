@@ -9,3 +9,5 @@ FROM users_tbl u, creatures_tbl c, moves_tbl m, users_creatures_moves_tbl ucm
 INNER JOIN users_tbl u2 ON u2.user_id = ucm.user_id
 AND m.move_id = ucm.move_id
 INNER JOIN creatures_tbl c2 ON c2.creature_id = ucm.creature_id
+
+http://localhost/CodeIgniter_template/index.php/user/random/random/random/user_creature_moves_information

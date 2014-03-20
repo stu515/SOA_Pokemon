@@ -24,13 +24,14 @@ class database extends CI_Controller
 	{
 		$this->load->model('database_model');
 		$database = $this->database_model->getUser();
-		foreach($database as $row)
+		//foreach($database as $row)
+		//{
+			//$data['user_id'] = $row['user_id']; //change to model (database) if single row is to be returned
+		//}
+		if($database != null)
 		{
-			$data['user_id'] = $row['user_id']; //change to model (database) if single row is to be returned
-		}
-		if($data != null)
-		{
-			$this->load->view('database_view', $data); //print data to database view
+			echo json_encode($database);
+			//$this->load->view('database_view', $data); //print data to database view
 		}
 		else if($data == null)
 		{
@@ -151,19 +152,20 @@ class database extends CI_Controller
 	public function getUserCreatureMove($user_id, $creature_name, $move_name) //plural
 	{
 		$this->load->model('database_model');
-		$data = $this->database_model->getUserCreatureMove($user_id,$creature_name, $move_name);
+		$data = array($this->database_model->getUserCreatureMove($user_id,$creature_name, $move_name));
 		foreach($data as $row)
 		{
-			//$data['user_id'] = $row['user_id'];
-			echo $row['creature_id'];
-			echo "\n";
-			echo $row['user_id'];
+			$data['user_id'] = $row['user_id'];
+			//echo $row['creature_id'];
+			//echo "\n";
+			//echo $row['user_id'];
 			
 			//change to model (database) if single row is to be returned
 		}
+		
 		if($data != null)
 		{
-			//$this->load->view('database_view', $data); //print data to database view
+			$this->load->view('database_view', $data); //print data to database view
 		}
 		else if($data == null)
 		{

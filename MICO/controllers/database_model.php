@@ -15,7 +15,21 @@ class database_model extends CI_Model{
 	public function getUser()
 	{
 		$query = $this->db->get('users_tbl');
-		return $query->result_array(); //return row_array() pag isa lang
+
+		foreach($query->result() as $rows)
+		{
+			$newdata = array(
+					'user_id' => $rows->user_id,
+					'user_name' => $rows->username,
+					'password' => $rows->password,
+					'handle' => $rows->handle,				
+					'user_email' => $rows->email_address,
+					'mobile_number' => $rows->mobile_number,
+			);
+		}
+
+		return $newdata;
+		//return $query->result_array(); //return row_array() pag isa lang
 	}
 
 	public function getAllCreatures()
@@ -91,7 +105,7 @@ class database_model extends CI_Model{
 		{
 			if ($arrquery[$i] == func_get_arg(0))
 			{
-				return $arrquery[$i];
+				return json_encode($arrquery[$i]);
 				break;
 			}
 		}

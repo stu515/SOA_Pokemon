@@ -5,35 +5,30 @@ class database extends CI_Controller
 	{
 		$this->load->model('database_model');
 		$database = $this->database_model->getAllUsers();
-		foreach($database as $row)
+
+		if($database != null)
 		{
-			$data['username'] = $row['username'];
-			$data['user_id'] = $row['user_id']; //change to model (database) if single row is to be returned
+			echo json_encode($database);
+			//$this->load->view('database_view', $data); //print data to database view
 		}
-		if($data != null)
+		else if($database == null)
 		{
-			$this->load->view('database_view', $data); //print data to database view
-		}
-		else if($data == null)
-		{
-			echo "Not found in database";
+			//echo "Not found in database";
 		}
 	}
 
 	public function getUser($pls) //get one user
 	{
 		$this->load->model('database_model');
-		$database = $this->database_model->getUser();
-		//foreach($database as $row)
-		//{
-			//$data['user_id'] = $row['user_id']; //change to model (database) if single row is to be returned
-		//}
+		$database = $this->database_model->getUser($pls);
+
+
 		if($database != null)
 		{
 			echo json_encode($database);
-			//$this->load->view('database_view', $data); //print data to database view
+
 		}
-		else if($data == null)
+		else if($database == null)
 		{
 			echo "Not found in database";
 		}
@@ -43,33 +38,29 @@ class database extends CI_Controller
 	{
 		$this->load->model('database_model');
 		$database = $this->database_model->getAllCreatures();
-		foreach($database as $row)
+
+		if($database != null)
 		{
-			$data['creature_name'] = $row['creature_name']; //change to model (database) if single row is to be returned
+			echo json_encode($database);
+
 		}
-		if($data != null)
-		{
-			$this->load->view('database_view', $data); //print data to database view
-		}
-		else if($data == null)
+		else if($database == null)
 		{
 			echo "Not found in database";
 		}
 	}
 
-	public function getCreature($creature_name)
+	public function getCreature($creature_id)
 	{
 		$this->load->model('database_model');
-		$database = $this->database_model->getCreature($creature_name);
-		foreach($database as $row)
+		$database = $this->database_model->getCreature($creature_id);
+
+
+		if($database != null)
 		{
-			$data['creature_name'] = $row['creature_name']; //change to model (database) if single row is to be returned
+			echo json_encode($database);
 		}
-		if($data != null)
-		{
-			$this->load->view('database_view', $data); //print data to database view
-		}
-		else if($data == null)
+		else if($database == null)
 		{
 			echo "Not found in database";
 		}
@@ -79,50 +70,42 @@ class database extends CI_Controller
 	{
 		$this->load->model('database_model');
 		$database = $this->database_model->getAllMoves();
-		foreach($database as $row)
+
+		if($database != null)
 		{
-			$data['move_name'] = $row['move_name']; //change to model (database) if single row is to be returned
+			echo json_encode($database);
+
 		}
-		if($data != null)
-		{
-			$this->load->view('database_view', $data); //print data to database view
-		}
-		else if($data == null)
+		else if($database == null)
 		{
 			echo "Not found in database";
 		}
 	}
 
-	public function getMove($move_name)
+	public function getMove($move_id)
 	{
 		$this->load->model('database_model');
-		$database = $this->database_model->getMove($move_name);
-		foreach($database as $row)
+		$database = $this->database_model->getMove($move_id);
+
+
+		if($database != null)
 		{
-			$data['move_name'] = $row['move_name']; //change to model (database) if single row is to be returned
+			echo json_encode($database);
 		}
-		if($data != null)
-		{
-			$this->load->view('database_view', $data); //print data to database view
-		}
-		else if($data == null)
+		else if($database == null)
 		{
 			echo "Not found in database";
 		}
 	}
 
-	public function getUserCreature($user_id,$creature_id) //singular
+	public function getUserCreature($user_id, $creature_id) //singular
 	{
 		$this->load->model('database_model');
-		$data = $this->database_model->getUserCreature($user_id,$creature_id);
-		foreach($data as $row)
-		{
-			$data['user_id'] = $row['user_id']; //change to model (database) if single row is to be returned
-			//echo $row['user_id'];
-			
-		}
+		$data = $this->database_model->getUserCreature($user_id, $creature_id);
+
 		if($data != null)
 		{
+			echo json_encode($data);
 			//$this->load->view('database_view', $data); //print data to database view
 		}
 		else if($data == null)
@@ -134,14 +117,12 @@ class database extends CI_Controller
 	public function getAllUserCreatures($username) //plural
 	{
 		$this->load->model('database_model');
-		$database = $this->database_model->getUserCreature($username);
-		foreach($database as $row)
-		{
-			$data['nickname'] = $row['nickname']; //change to model (database) if single row is to be returned
-		}
+		$data = $this->database_model->getUserCreature($username);
+
 		if($data != null)
 		{
-			$this->load->view('database_view', $data); //print data to database view
+			echo json_encode($data);
+			//$this->load->view('database_view', $data); //print data to database view
 		}
 		else if($data == null)
 		{
@@ -149,23 +130,57 @@ class database extends CI_Controller
 		}
 	}
 
-	public function getUserCreatureMove($user_id, $creature_name, $move_name) //plural
+	public function getUserCreatureMove($user_id, $creature_id, $move_id) //plural
 	{
 		$this->load->model('database_model');
-		$data = array($this->database_model->getUserCreatureMove($user_id,$creature_name, $move_name));
-		foreach($data as $row)
-		{
-			$data['user_id'] = $row['user_id'];
-			//echo $row['creature_id'];
-			//echo "\n";
-			//echo $row['user_id'];
-			
-			//change to model (database) if single row is to be returned
-		}
-		
+		$data = array($this->database_model->getUserCreatureMove($user_id,$creature_id, $move_id));
+
+
 		if($data != null)
 		{
-			$this->load->view('database_view', $data); //print data to database view
+			echo json_encode($data);
+			//$this->load->view('database_view', $data); //print data to database view
+		}
+		else if($data == null)
+		{
+			echo "Not found in database";
+		}
+	}
+
+	public function getLocation($location_id) //plural
+	{
+		$this->load->model('database_model');
+		$data = array($this->database_model->getLocation($location_id));
+
+
+		if($data != null)
+		{
+			if(json_encode($data) != null)
+			{
+				echo json_encode($data);
+			}
+			else 
+			{
+				echo "Not found in database";
+			}
+			//$this->load->view('database_view', $data); //print data to database view
+		}
+		else
+		{
+			echo "Not found in database";
+		}
+	}
+
+	public function getAllLocations() //plural
+	{
+		$this->load->model('database_model');
+		$data = array($this->database_model->getAllLocations());
+
+
+		if($data != null)
+		{
+			echo json_encode($data);
+			//$this->load->view('database_view', $data); //print data to database view
 		}
 		else if($data == null)
 		{
